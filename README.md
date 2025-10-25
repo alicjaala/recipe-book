@@ -36,7 +36,7 @@ pip install -r requirements.txt
 3. Run the application:
    
 ```bash
-python main.py
+python Main.py
 ```
 
 ## Technologies
@@ -57,8 +57,3 @@ If you’d like to help improve the application:
 
 ## License
 This project is for educational purposes only.
-
-![Image](https://github.com/user-attachments/assets/bf804e3d-9f51-45f6-aa77-17ee179417f8)
-
-
-![Image](https://github.com/user-attachments/assets/d1f45cb3-5a40-41b6-a776-20b4c0439f37)
