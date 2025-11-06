@@ -1,4 +1,4 @@
-from RecipesDB import RecipesDB
+from recipes_db import RecipesDB
 from GUI import RecipeManager
 from PySide6.QtWidgets import QApplication
 import sys

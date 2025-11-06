@@ -1,13 +1,13 @@
 from stats import StatsGenerator
-from RecipesDB import RecipesDB
+from recipes_db import RecipesDB
+
 
 if __name__ == "__main__":
 
-    db = RecipesDB()
+    db: RecipesDB = RecipesDB()
     print(db.is_ready())
 
-    # Dodaj przepisy testowe
-    recipe_dict_1 = {
+    recipe_dict_1: dict[str, object] = {
         'title': 'Krem dyniowy',
         'description': 'Opis przygotowania...',
         'ingredients': [
@@ -17,7 +17,7 @@ if __name__ == "__main__":
         'tags': ['#zupa', '#sniadanie', '#trudne']
     }
 
-    recipe_dict_2 = {
+    recipe_dict_2: dict[str, object] = {
         'title': 'Pomidorowa',
         'description': 'Opis przygotowania...',
         'ingredients': [
@@ -27,7 +27,7 @@ if __name__ == "__main__":
         'tags': ['#zupa', '#obiad', '#trudne']
     }
 
-    recipe_dict_3 = {
+    recipe_dict_3: dict[str, object] = {
         'title': 'Onigiri',
         'description': 'Opis przygotowania...',
         'ingredients': [
@@ -42,8 +42,7 @@ if __name__ == "__main__":
     db.add_recipe(recipe_dict_2)
     db.add_recipe(recipe_dict_3)
 
-    # Użyj klasy StatsGenerator
-    stats = StatsGenerator(db)
+    stats: StatsGenerator = StatsGenerator(db)
 
     stats.generate_difficulty_plot()
     stats.generate_meal_plot()

@@ -36,7 +36,7 @@ pip install -r requirements.txt
 3. Run the application:
    
 ```bash
-python Main.py
+python main.py
 ```
 
 ## Technologies

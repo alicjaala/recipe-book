@@ -1,5 +1,5 @@
 import re
-from Recipe import *
+from recipe import *
 
 
 class RecipeParseError(Exception):
@@ -9,7 +9,7 @@ class RecipeParseError(Exception):
 class RecipeFileHandler:
 
     @staticmethod
-    def parse_ingredient_line(line):
+    def parse_ingredient_line(line: str) -> dict[str, str | float]:
         if '-' not in line:
             raise RecipeParseError(f"Nieprawidłowy format składnika: '{line}'")
 
@@ -36,35 +36,36 @@ class RecipeFileHandler:
         return {'name': name, 'amount': amount, 'unit': unit}
 
     @staticmethod
-    def load_from_file(file_path):
+    def load_from_file(file_path: str) -> "Recipe":
         with open(file_path, 'r', encoding='utf-8') as file:
-            lines = [line.strip() for line in file if line.strip()]
+            lines: list[str] = [line.strip() for line in file if line.strip()]
 
         if not lines:
             raise RecipeParseError("Plik jest pusty.")
 
         try:
-            ingredients_start = lines.index("Składniki")
+            ingredients_start: int = lines.index("Składniki")
         except ValueError:
             raise RecipeParseError("Brak sekcji 'Składniki'.")
 
         if ingredients_start == 0 or lines[0].lower() == 'składniki':
             raise RecipeParseError("Brak tytułu przepisu.")
 
-        title = lines[0]
-        ingredients = []
+        title: str = lines[0]
+        ingredients: list[dict[str, str | float]] = []
+
         for i in range(ingredients_start + 1, len(lines)):
             if '-' not in lines[i]:
-                description_start = i
+                description_start: int = i
                 break
             ingredient = RecipeFileHandler.parse_ingredient_line(lines[i])
             ingredients.append(ingredient)
         else:
             raise RecipeParseError("Brak opisu przepisu.")
 
-        description = '\n'.join(lines[description_start:]).strip()
-        tag_matches = re.findall(r'#\w+', description)
-        tags = [tag.lower() for tag in tag_matches]
+        description: str = '\n'.join(lines[description_start:]).strip()
+        tag_matches: list[str] = re.findall(r'#\w+', description)
+        tags: list[str] = [tag.lower() for tag in tag_matches]
         description = re.sub(r'#\w+', '', description).strip()
 
         if not description:
@@ -73,7 +74,7 @@ class RecipeFileHandler:
         return Recipe(title=title, ingredients=ingredients, description=description, tags=tags)
 
     @staticmethod
-    def save_to_file(recipe: 'Recipe', file_path: str):
+    def save_to_file(recipe: "Recipe", file_path: str) -> None:
         with open(file_path, 'w', encoding='utf-8') as f:
             f.write(recipe.title + '\n\n')
             f.write('Składniki\n')
