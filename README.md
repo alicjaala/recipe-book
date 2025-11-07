@@ -1,59 +1,101 @@
-# Recipe Book — Desktop Application for Managing Recipes
+# 🍲 Recipe Book
 
-Recipe Book is functional desktop application that allows you to store, import, and export cooking recipes. Perfect for anyone who enjoys cooking and wants to keep their recipes organized in one place.
+A desktop application built with **Python**, **PySide6**, and **SQLite** for managing your personal culinary recipes. This app allows you to store, organize, view, and manage your favorite dishes.
 
-## Features
 
-- Browse previously saved recipes
-- Import recipes from .txt files
-- Export recipes to a print-friendly format
-- Generate a shopping list based on a recipe
-- Store recipes and ingredients in a local SQLite database
-- View statistics about different types of recipes and used ingredients
-- Intuitive graphical user interface built with PySide6
+## 🍳 Features
 
-## Requirements
+* **Add & Manage Recipes:** Full **CRUD** (Create, Read, Update, Delete) functionality for your recipes.
+* **Detailed Entries:** Store recipes with titles, ingredient lists (with quantities), and step-by-step instructions.
+* **Import from File:** Easily import new recipes from a `.txt` file.
+* **Export to File:** Save your favorite recipes back to a `.txt` file for sharing.
+* **Shopping List Generator:** Automatically create a shopping list based on the selected recipe.
+* **Statistics:** View interesting statistics about your recipe collection (e.g., tags, most common ingredients).
+* **Persistent Storage:** All data is saved in a local **SQLite** database, so your recipes are always available.
 
-- Python 3.8+
-- PySide6
-- SQLite
+---
 
-## Installation
+## 🛠️ Technology Stack
 
-1. Clone the repository:
+* **Core Language:** Python 3
+* **GUI (Graphical Interface):** PySide6
+* **Database:** SQLite 3
 
-```bash
-git clone https://github.com/alicjaala/Ksiazka_z_przepisami.git
-cd Ksiazka_z_przepisami
+---
+
+## 🚀 Getting Started
+
+Follow these instructions to get a copy of the project up and running on your local machine for development and testing.
+
+### Prerequisites
+
+* Python 3.8+
+* `pip` (Python package installer)
+
+### Installation
+
+1.  **Clone the repository:**
+    ```sh
+    git clone [https://github.com/alicjaala/recipe-book.git].git
+    cd [your-repo-name]
+    ```
+
+2.  **Create and activate a virtual environment (recommended):**
+    ```sh
+    # Windows
+    python -m venv venv
+    .\venv\Scripts\activate
+
+    # macOS/Linux
+    python3 -m venv venv
+    source venv/bin/activate
+    ```
+
+3.  **Install the required dependencies:**
+    ```sh
+    pip install -r requirements.txt
+    ```
+
+4.  **Run the application:**
+    ```sh
+    python main.py
+    ```
+
+---
+
+## 📖 Usage
+
+Once the application is running:
+
+1.  The main window displays a list of all your saved recipes.
+2.  **Dodaj ręcznie:** Click the "Add Recipe" button to open a new form. Fill in the title, ingredients, and instructions, then save.
+3.  **Import z pliku:** Use the "Import z pliku" button to select a text file and add it to your database.
+4.  **Zapisz przepis** Use this button to save currently selected recipe to a text file on your computer.
+5.  **Eskport listy:** Select the recipe from the list and click this button to generate a shopping list.
+6.  **Usuń przepis** Use this button to delete the recipe from your database.
+7.  **Pokaż statystyki:** Click to see the insights about your collection.
+
+---
+## 🗂️ Project Structure
+
+The project code is organized into a `src` directory to keep the root folder clean and separate source code from project files like `.gitignore`.
+
+```
+/
+├── src/
+│   ├── main.py                   # Main script to run the application
+│   ├── GUI.py                    # Defines the PySide6 user interface and event handling
+│   ├── recipe.py                 # Contains the `Recipe` class (data model)
+│   ├── recipes_db.py             # Handles all database operations (SQLite connection, CRUD)
+│   ├── recipe_file_handler.py    # Logic for importing/exporting recipes
+│   ├── shopping_list_generator.py # Logic for creating shopping lists
+│   ├── stats.py                  # Functions for generating statistics
+│   ├── stats_test.py             # Tests for the statistics module
+│   └── przepis.txt             # Example recipe file for import
+│
+├── .gitignore                # Specifies files for Git to ignore
+├── README.md                 # This file
+└── requirements.txt          # List of Python dependencies (e.g., PySide6)
 ```
 
-2. Install required libraries:
-
-```bash
-pip install -r requirements.txt
-```
-
-3. Run the application:
-   
-```bash
-python main.py
-```
-
-## Technologies
-
-- Python 3
-- PySide6
-- SQLite
-
-## Contributing
-
-If you’d like to help improve the application:
-
-1. Fork the repository
-2. Create a new branch (git checkout -b new-feature)
-3. Make your changes and commit them (git commit -am 'Add new feature')
-4. Push the branch (git push origin new-feature)
-5. Open a Pull Request
-
-## License
-This project is for educational purposes only.
+---
