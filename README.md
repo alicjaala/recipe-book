@@ -76,6 +76,26 @@ Once the application is running:
 7.  **Pokaż statystyki:** Click to see the insights about your collection.
 
 ---
+
+## 🧪 Running Tests
+
+This project includes a suite of unit tests for the statistics generation.
+
+Tests are built using Python's built-in `unittest` module and can be found in the `src/` directory.
+
+To run the tests:
+
+1.  Navigate to the source directory:
+    ```sh
+    cd src
+    ```
+
+2.  Run the `unittest` module, pointing it at the test file:
+    ```sh
+    python -m unittest stats_test.py
+    ```
+
+---
 ## 🗂️ Project Structure
 
 The project code is organized into a `src` directory to keep the root folder clean and separate source code from project files like `.gitignore`.
